@@ -16,9 +16,11 @@ def check_passwd_strength(passwd):
     
 def common_passwds(passwd):
     common_pass=["Admin", "Password", "abc123","root","abcd1234","newpassword"]
-    for p in common_pass:
-        if p.lower()==passwd.lower():
-            return "Weak: very common password"
+    # for p in common_pass:
+    #     if p.lower()==passwd.lower():
+    #         return "Weak: very common password" ------>This is same for the below code in simple language.
+    if any(char.lower()==passwd for char in common_pass):
+        return "Weak: very common password"
     return check_passwd_strength(passwd)
 
 def passwd_checker():
